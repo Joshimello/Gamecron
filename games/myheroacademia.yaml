@@ -1,0 +1,5 @@
+game: "My Hero Academia: The Strongest Hero"
+server: EN
+timezone: America/Los_Angeles
+dailyReset: 13:00
+utcDailyReset: true

@@ -1,0 +1,5 @@
+game: Alchemy Stars
+server: US
+timezone: America/Chicago
+dailyReset: 10:00
+utcDailyReset: true

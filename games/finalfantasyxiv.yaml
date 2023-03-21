@@ -1,0 +1,5 @@
+game: FINAL FANTASY XIV
+server: Global
+timezone: Etc/GMT
+dailyReset: 15:00
+utcDailyReset: true

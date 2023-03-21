@@ -1,0 +1,4 @@
+game: "Magic: The Gathering Arena"
+server: Global
+timezone: Etc/UTC
+dailyReset: 09:00

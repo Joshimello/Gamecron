@@ -1,0 +1,5 @@
+game: "Sky: Children of the Light"
+server: Global
+timezone: America/Los_Angeles
+dailyReset: 08:00
+utcDailyReset: true

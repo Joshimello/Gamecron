@@ -1,0 +1,4 @@
+game: MementoMori
+server: Global
+timezone: Etc/GMT-1
+dailyReset: 04:00
