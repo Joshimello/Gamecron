@@ -1,7 +1,68 @@
 <script>
-  let text
+  import { onMount } from 'svelte'
+  import '@fontsource/roboto-slab'
+  import '@fontsource/roboto-mono'
+
+  let games = []
+
+  onMount( async() => {
+
+    let data = (await import('./games.json')).default
+
+    setInterval(() => {
+      games = data.map(game => {
+
+        game['serverTime'] = new Date(new Date().toLocaleString('en-US', { timeZone: game.timezone }))
+
+        game['serverResetTime'] = new Date(game.serverTime.getFullYear(), game.serverTime.getMonth(), game.serverTime.getDate(), game.dailyReset.split(":")[0], game.dailyReset.split(":")[1])
+
+        let timeDiff = game.serverResetTime.getTime() - game.serverTime.getTime()
+        if(timeDiff <= 0) timeDiff += (24 * 60 * 60 * 1000)
+
+        game['timeToReset'] = [
+          Math.floor(timeDiff / (60 * 60 * 1000)),
+          Math.floor(timeDiff / (60 * 1000) % 60),
+          Math.floor(timeDiff / (1000) % 60),
+        ]
+
+        game['percentToReset'] = Math.floor(100 - (timeDiff / (24 * 60 * 60 * 1000) * 100))
+
+        return game
+
+      })
+    }, 1000)
+  })
+    
 </script>
 
-<div>
+<div class="bg-gray-100 min-h-100vh p-8 flex flex-col gap-4">
+  {#if games.length}
+    {#each games as game}
+      <div class="bg-white shadow-xl p-4 rounded flex flex-row gap-4">
 
+        <img class="h-16 rounded-2xl" src="./icons/{game.game.replace(/[/\\?%*:|"<>]/g, '').toLowerCase()}.webp" alt={game.game} />
+
+        <div class="flex flex-col flex-1">
+          <div class="flex justify-between items-start">
+            <span class="text-2xl font-serif">{game.game}</span>
+            <span class="text-sm font-mono">{game.server.toUpperCase()}</span>
+          </div>
+          <span class="font-mono text-lg">
+            {String(game.timeToReset[0]).padStart(2, '0')}h
+            {String(game.timeToReset[1]).padStart(2, '0')}m
+            {String(game.timeToReset[2]).padStart(2, '0')}s
+          </span>
+          <div class="border-orange-100 border-3 rounded" style="width: {game.percentToReset}%"></div>
+        </div>
+
+      </div>
+    {/each}
+  {:else}
+    Loading...
+  {/if}
 </div>
+
+<style>
+  .font-serif { font-family: 'Roboto Slab', serif; }
+  .font-mono { font-family: 'Roboto Mono', monospace; }
+</style>

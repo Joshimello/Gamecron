@@ -1,0 +1,4 @@
+game: Counter:Side
+server: Global
+timezone: Etc/GMT-9
+dailyReset: 04:00

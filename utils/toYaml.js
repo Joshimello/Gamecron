@@ -8,15 +8,13 @@ data.forEach(game => {
   let fileName = 
     '../games/' +
 
+    '[' + game.server + '] ' +
+
     game.game
-      .split(':')[0]
-      .match(/[A-Za-z0-9]/g)
-      .join('')
+      .replace(/[/\\?%*:|"<>]/g, '')
       .toLowerCase()
 
     + '.yaml'
   
-
-
   fs.writeFileSync(fileName, stringify(game))
 })

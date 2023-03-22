@@ -1,0 +1,5 @@
+game: Lost Ark
+server: EU West
+timezone: Etc/GMT
+dailyReset: 10:00
+utcDailyReset: true
