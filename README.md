@@ -1,10 +1,8 @@
 # Gamecron
+forgot when your dailies reset today? Here ya go [Gamecron](https://joshimello.github.io/Gamecron/)  
 
-games daily reset time  
-based off [cicerakes/Game-Time-Master](https://github.com/cicerakes/Game-Time-Master)
-
-### Usage
-[Gamecron](https://joshimello.github.io/Gamecron/)  
+### Info
+minimal app to track daily reset time in games  
 
 ### Adding Games
 add a file in /games with the format
@@ -22,3 +20,12 @@ timezone: Asia/Tokyo
 dailyReset: 04:00
 ```
 then throw a pull request
+
+### To Do
+- [ ] pre... loading.........
+- [ ] extra information
+- [ ] automated icons
+
+### Credits
+game icons scraped from [QooApp](https://www.qoo-app.com/) with [this](https://github.com/Joshimello/Gamecron/blob/main/utils/getIcon.js)  
+initial game data from [cicerakes/Game-Time-Master](https://github.com/cicerakes/Game-Time-Master)
