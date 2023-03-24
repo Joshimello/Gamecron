@@ -4,7 +4,7 @@ games daily reset time
 based off [cicerakes/Game-Time-Master](https://github.com/cicerakes/Game-Time-Master)
 
 ### Usage
-[Gamecron](joshimello.github.io/Gamecron/)  
+[Gamecron](https://joshimello.github.io/Gamecron/)  
 
 ### Adding Games
 add a file in /games with the format
