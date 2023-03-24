@@ -8,3 +8,5 @@ let data = files
   .sort((a, b) => a.game > b.game ? 1 : -1)
 
 fs.writeFileSync('./src/games.json', JSON.stringify(data))
+
+console.log('create ./src/games.json')
