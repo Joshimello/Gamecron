@@ -49,6 +49,15 @@
 
   $: searchResultIDs = minisearch ? minisearch.search(value) : []
   $: searchResult = searchResultIDs.length ? searchResultIDs.map(entry => games[entry.id]) : games
+
+  function checkExists(imageUrl) {
+    let img = new Image()
+
+    img.onerror = () => { return false }
+    img.onload = () => { return true }
+
+    img.src = imageUrl
+  }
     
 </script>
 
@@ -62,7 +71,7 @@
       {#each searchResult as game}
         <div class="bg-white shadow-xl p-4 rounded flex flex-row gap-4">
 
-          <img class="h-16 rounded-2xl" src="./icons/{game.game.replace(/[/\\?%*:|"<>]/g, '').toLowerCase()}.webp" alt={game.game} />
+          <img class="h-16 rounded-2xl" src="./icons/{game.game.replace(/[/\\?%*:|"<>]/g, '').toLowerCase()}.webp" alt={game.game} onerror="this.style.display='none'" />
 
           <div class="flex flex-col flex-1">
             <div class="flex justify-between items-start">
